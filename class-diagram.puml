@@ -1,0 +1,33 @@
+@startuml
+
+class Product {
+  - name: String
+  - price: int
+  + getName(): String
+  + getPrice(): int
+  + displayInfo(): void
+}
+
+class ProductStock {
+  - product: Product
+  - quantity: int
+  + reduce(): void
+  + restock(int): void
+  + getQuantity(): int
+  + getProduct(): Product
+}
+
+class VendingMachine {
+  - balance: int 
+  - products: Map<Integer, ProductStock>
+  + insertMoney(int): void
+  + showProducts(): void
+  + buyProduct(int): void
+  + returnChange(): void
+  + restockProduct(int, Product, int): void 
+}
+
+ProductStock --> Product
+VendingMachine --> ProductStock
+
+@enduml
